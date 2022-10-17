@@ -6,19 +6,17 @@ function Header() {
 export function Menu() {
   return (
     <>
-      <nav className="navbar navbar-light bg-primary">
+      <nav className="navbar navbar-light bg-dark">
         <div className="container-fluid">
           <div className="navbar-header">
             <Link
-              className="btn btn-outline-info navbar-brand mr-0 mr-md-2"
+              className="btn btn-outline-info navbar-brand mx-auto text-white"
               to="/"
               aria-label="Bootstrap"
             >
-              M
-            </Link>
-            <a className="navbar-brand" href="/">
               Inicio
-            </a>
+            </Link>
+            
           </div>
           <div
             className="collapse navbar-collapse"
@@ -27,9 +25,13 @@ export function Menu() {
             <ul className="nav navbar-nav navbar-right"></ul>
           </div>
           <div className="nav-item dropdown my-2 my-sm-0">
-            <button className="btn btn-outline-warning">Login</button>
+            <Link className="btn btn-outline-warning" to="/login">Login</Link>
+  
+            <Link className="btn btn-outline-warning mx-2" to="/create">Create</Link>
+      
           </div>
         </div>
+       
       </nav>
     </>
   );
