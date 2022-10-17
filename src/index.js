@@ -1,20 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Mensaje, Registrados} from "./components/Mensaje";
-import Header, {Menu} from "./components/Header";
-import { Evento } from "./components/Evento";
-import { Equipo } from "./components/Equipo";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {Menu} from "./elements/Header";
+import { ListaEventos } from "./events/ListaEventos";
+import { Tablero } from "./dashboard/Tablero";
+import { Login } from "./users/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <Menu />
-    <Header />
-    <Mensaje />
-    <Registrados />
-    <Evento fecha="2022-09-27" rival1="Medellin" rival2="Nacional"/>
-    <Evento fecha="2022-09-27" rival1="Millonarios" rival2="Nacional"/>
-    <Evento fecha="2022-09-27" rival1="DIM" rival2="Nacional"/>
-    <Equipo nombre="Medellin" jugados={12} promedio={3.4} ultimo="2022-09-15" record={[5,2]} internacional={true} ubicado={{pais: "Colombia", ciudad:"Cali"}} />
+    <Router>
+        <Menu/>
+        <div className='container'>
+            <div className='row align-center'>
+                <div className='col m-5'>
+                    <Routes>
+                        <Route path="/" element={ <ListaEventos/> }></Route>
+                        <Route path="/login" element={ <Login/> }></Route>
+                        <Route path="/tablero/*" element={<Tablero/> }></Route>
+                    </Routes>
+                </div>
+            </div>
+        </div>
+    </Router>
   </>
 );

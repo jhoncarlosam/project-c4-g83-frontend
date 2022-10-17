@@ -1,4 +1,4 @@
-// import './css/bootstrap.min.css'
+import "../css/styles.css"
 export function Equipo(props) {
   const etiqueta = {
     display: "block",
@@ -6,10 +6,11 @@ export function Equipo(props) {
     height: "240px",
     padding: "10px",
     width: "250px",
+    fontFamily: "fantasy",
   };
   return (
     <>
-      <div style = {etiqueta}>
+      <div style={etiqueta}>
         <ul>
           <li>nombre: {props.nombre}</li>
           <li>partidos jugados: {props.jugados}</li>
