@@ -5,6 +5,7 @@ import {Menu} from "./elements/Header";
 import { ListaEventos } from "./events/ListaEventos";
 import { Tablero } from "./dashboard/Tablero";
 import { Login } from "./users/Login";
+import Create from "./users/Create";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,7 +18,8 @@ root.render(
                     <Routes>
                         <Route path="/" element={ <ListaEventos/> }></Route>
                         <Route path="/login" element={ <Login/> }></Route>
-                        <Route path="/tablero/*" element={<Tablero/> }></Route>
+                        <Route path="/Create" element={ <Create/> }></Route>
+                        <Route path="/tablero/*" element={ <Tablero/> }></Route>
                     </Routes>
                 </div>
             </div>
