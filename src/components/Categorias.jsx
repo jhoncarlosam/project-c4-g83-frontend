@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import API from "../global"
 
-export default function Equipo() {
+export default function Categorias() {
 
-  const [Equipo, setEquipo] = useState([]);
+  const [categorias, setCategorias] = useState([]);
 
   const fetch = async () => {
-    let raw = await axios.get(API+"/api/equipo/all", {
+    let raw = await axios.get(API+"/api/deporte/all", {
       headers: {
         'access-token': localStorage.getItem("TOKEN")
       }
     })
-    setEquipo(raw.data);
+    setCategorias(raw.data);
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Equipo() {
 
      <div className='container my-3'>
       
-     {Equipo.map((item, index) => (
+     {categorias.map((item, index) => (
               <div key={index} className="card card-body col-md-5 mx-auto float-center">
                 <div className="card">
                 <span className='badge bg-dark mb-3 p-3 '> {item.nombre} </span>

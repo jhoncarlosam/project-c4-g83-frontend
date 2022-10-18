@@ -1,4 +1,4 @@
-export function Mensaje() {
+export default function Mensaje() {
   const evento = {
     nombre: "partido",
     marcador1: 2,
@@ -26,14 +26,4 @@ export function Mensaje() {
       {ganador(evento.marcador1, evento.marcador2)}
     </div>
   );
-}
-
-export function Registrados() {
-  return <>
-    <ul>
-      <li>Equipo 1</li>
-      <li>Equipo 2</li>
-      <li>Equipo 3</li>
-    </ul>
-  </>
 }

@@ -1,12 +1,41 @@
-import React from "react";
+import { useState } from "react";
+import axios from "axios";
+
+import control from "./../../history";
+import API from "./../../global";
 
 function Create() {
+  // document.body.style.backgroundColor = "#1C2833";
+
+  const [usuario, setUsuario] = useState("");
+  const [clave, setClave] = useState("");
+
+  const change = (event) => {
+    setUsuario(event.target.value);
+  };
+  const change2 = (event) => {
+    setClave(event.target.value);
+  };
+
+  const verify = async () => {
+    let data = await axios
+      .post(API + "/api/auth/register", {
+        usuario: usuario,
+        clave: clave,
+        rol: 1
+      })
+      .catch((errr) => {
+        alert(errr);
+      });
+    control.push("/logiin");
+    window.location.reload(true);
+  };
   const tag = {
-    backgroundColor: '#EEE'
-  }
+    backgroundColor: "#EEE",
+  };
   const tag2 = {
-    borderRadius: "25px"
-  }
+    borderRadius: "25px",
+  };
   return (
     <>
       <section class="vh-100" style={tag}>
@@ -25,75 +54,36 @@ function Create() {
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example1c">
+                             Usuario
+                            </label>
                             <input
                               type="text"
                               id="form3Example1c"
                               class="form-control"
+                              value={usuario} onChange={change}
                             />
-                            <label class="form-label" for="form3Example1c">
-                              Your Name
-                            </label>
-                          </div>
-                        </div>
-
-                        <div class="d-flex flex-row align-items-center mb-4">
-                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                          <div class="form-outline flex-fill mb-0">
-                            <input
-                              type="email"
-                              id="form3Example3c"
-                              class="form-control"
-                            />
-                            <label class="form-label" for="form3Example3c">
-                              Your Email
-                            </label>
                           </div>
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4c">
+                            Clave
+                            </label>
                             <input
                               type="password"
                               id="form3Example4c"
                               class="form-control"
+                              value={clave} onChange={change2}
                             />
-                            <label class="form-label" for="form3Example4c">
-                              Password
-                            </label>
                           </div>
-                        </div>
-
-                        <div class="d-flex flex-row align-items-center mb-4">
-                          <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                          <div class="form-outline flex-fill mb-0">
-                            <input
-                              type="password"
-                              id="form3Example4cd"
-                              class="form-control"
-                            />
-                            <label class="form-label" for="form3Example4cd">
-                              Repeat your password
-                            </label>
-                          </div>
-                        </div>
-
-                        <div class="form-check d-flex justify-content-center mb-5">
-                          <input
-                            class="form-check-input me-2"
-                            type="checkbox"
-                            value=""
-                            id="form2Example3c"
-                          />
-                          <label class="form-check-label" for="form2Example3">
-                            I agree all statements in{" "}
-                            <a href="#!">Terms of service</a>
-                          </label>
                         </div>
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="button" class="btn btn-primary btn-lg">
-                            Register
+                          <button onClick={verify}  type="button" class="btn btn-primary btn-lg">
+                            Registrar
                           </button>
                         </div>
                       </form>

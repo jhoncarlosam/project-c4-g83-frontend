@@ -1,5 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { CategoriaCreate } from "../categories/CategoriaCreate";
+import { CategoriaCreate } from "./Layout/categories/CategoriaCreate";
 
 export function Tablero() {
   return (

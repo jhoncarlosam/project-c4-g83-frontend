@@ -37,7 +37,7 @@ export function CategoriaCreate() {
 
             <div class="form-group my-4">
               <button type="submit" class="btn btn-primary">
-                Guardar
+                Añadir categoria
               </button>
             </div>
           </form>
